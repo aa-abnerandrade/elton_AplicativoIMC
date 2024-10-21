@@ -2,6 +2,10 @@ package com.example.calculadoraimc
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -14,7 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.calculadoraimc.ui.theme.CalculadoraIMCTheme
 
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity () {
+
+    lateinit var textView_peso : TextView;
+    lateinit var editTextText_peso : EditText;
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,6 +38,16 @@ class MainActivity : ComponentActivity() {
 //            }
 //        }
         Log.d("LifeCycle", "onCreate");
+        textView_peso = findViewById(R.id.textView_peso);
+        editTextText_peso = findViewById(R.id.editTextText_peso);
+    }
+
+    fun calcularButtonOnClick(v: View) {
+        Toast.makeText(
+            this,
+            "Seu peso é ",
+            Toast.LENGTH_LONG
+        ).show();
     }
 
     override fun onStart() {
