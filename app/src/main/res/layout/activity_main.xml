@@ -1,76 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_alignParentBottom="false"
     android:layout_centerInParent="false"
     android:layout_centerHorizontal="true"
-    android:layout_centerVertical="true"
-    android:orientation="vertical">
+    android:layout_centerVertical="true">
 
-    <TableLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="30dp">
-
-            <TextView
-                android:id="@+id/textView_peso"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Peso em Kg:" />
-
-            <EditText
-                android:id="@+id/editTextText_peso"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="20dp"
-                android:background="#EAE5E5"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="20sp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textView_altura"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Altura em Cm:" />
-
-            <EditText
-                android:id="@+id/editTextText_altura"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginStart="20dp"
-                android:background="#EAE5E5"
-                android:ems="10"
-                android:inputType="text"
-                android:textSize="20sp" />
-
-        </TableRow>
-
-    </TableLayout>
-
-    <Button
-        android:id="@+id/button_calcular"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#02670C"
-        android:onClick="calcularButtonOnClick"
-        android:padding="10dp"
-        android:text="Calcular"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:background="#E1E6E9"
+        android:orientation="vertical"
+        android:padding="20sp">
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/textView_titulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bebas_neue"
+            android:text="Calculadora IMC"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="266dp"
+            android:src="@drawable/img" />
+
+        <TextView
+            android:id="@+id/textView_peso"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Peso em Kg:" />
+
+        <EditText
+            android:id="@+id/editTextText_peso"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/textView_altura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="Altura em Cm:" />
+
+        <EditText
+            android:id="@+id/editTextText_altura"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="48dp"
+            android:background="#FFFFFF"
+            android:ems="10"
+            android:inputType="text"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/button_calcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#02670C"
+            android:onClick="calcularButtonOnClick"
+            android:padding="10dp"
+            android:text="Calcular"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
