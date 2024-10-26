@@ -22,6 +22,7 @@ class MainActivity : ComponentActivity () {
 
     lateinit var textView_peso : TextView;
     lateinit var editTextText_peso : EditText;
+    lateinit var textView_resultado : EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,11 +44,13 @@ class MainActivity : ComponentActivity () {
     }
 
     fun calcularButtonOnClick(v: View) {
-        Toast.makeText(
-            this,
-            "Seu peso é ",
-            Toast.LENGTH_LONG
-        ).show();
+//        Toast.makeText(
+//            this,
+//            "Seu peso é ",
+//            Toast.LENGTH_LONG
+//        ).show();
+        textView_resultado = findViewById(R.id.textView_resultado);
+        textView_resultado.setText("Oi");
     }
 
     override fun onStart() {

@@ -22,11 +22,25 @@
             android:id="@+id/textView_titulo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/bebas_neue"
-            android:text="Calculadora IMC"
+            android:fontFamily="@font/poppins_bold"
+            android:text="elton"
             android:textAlignment="center"
+            android:textColor="#04A5D0"
             android:textSize="20dp"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_subtitulo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Calculadora IMC"
+            android:textAlignment="center" />
+
+        <TextView
+            android:id="@+id/textView_espaco1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -35,18 +49,21 @@
             android:src="@drawable/img" />
 
         <TextView
+            android:id="@+id/textView_espaco2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
             android:id="@+id/textView_peso"
-            android:layout_width="370dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginRight="20dp"
             android:text="Peso em Kg:" />
 
         <EditText
             android:id="@+id/editTextText_peso"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
             android:background="#FFFFFF"
             android:ems="10"
             android:inputType="text"
@@ -56,7 +73,6 @@
             android:id="@+id/textView_altura"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:text="Altura em Cm:" />
 
         <EditText
@@ -73,14 +89,22 @@
             android:id="@+id/button_calcular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#02670C"
+            android:background="#08A8D4"
             android:onClick="calcularButtonOnClick"
             android:padding="10dp"
             android:text="Calcular"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="#FFFFFF"
+            android:textColorLink="#0BB0D7"
             android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView_resultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
+            android:textAlignment="center" />
 
     </LinearLayout>
 
