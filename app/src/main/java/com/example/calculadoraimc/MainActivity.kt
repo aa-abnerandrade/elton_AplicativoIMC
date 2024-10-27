@@ -1,5 +1,6 @@
 package com.example.calculadoraimc
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -20,37 +21,33 @@ import com.example.calculadoraimc.ui.theme.CalculadoraIMCTheme
 
 class MainActivity : ComponentActivity () {
 
-    lateinit var textView_peso : TextView;
-    lateinit var editTextText_peso : EditText;
-    lateinit var textView_resultado : EditText
+    private lateinit var editTextTextPeso: EditText
+    private lateinit var editTextTextAltura: EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main);
-//        setContent {
-//            CalculadoraIMCTheme {
-//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-//                    Greeting(
-//                        name = "Android",
-//                        modifier = Modifier.padding(innerPadding)
-//                    )
-//                }
-//            }
-//        }
         Log.d("LifeCycle", "onCreate");
-        textView_peso = findViewById(R.id.textView_peso);
-        editTextText_peso = findViewById(R.id.editTextText_peso);
+        editTextTextPeso = findViewById(R.id.editTextText_peso)
+        editTextTextAltura = findViewById(R.id.editTextText_altura)
+
     }
 
     fun calcularButtonOnClick(v: View) {
-//        Toast.makeText(
-//            this,
-//            "Seu peso é ",
-//            Toast.LENGTH_LONG
-//        ).show();
-        textView_resultado = findViewById(R.id.textView_resultado);
-        textView_resultado.setText("Oi");
+        val peso = editTextTextPeso.text.toString()
+        val altura = editTextTextAltura.text.toString()
+        if (peso.isNotEmpty() && altura.isNotEmpty()) {
+
+            val intentResult = Intent(this, ResultActivity::class.java)
+            intentResult.putExtra("peso", peso)
+            intentResult.putExtra("altura", altura)
+            startActivity(intentResult)
+        } else {
+
+            Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_LONG).show()
+        }
     }
 
     override fun onStart() {
