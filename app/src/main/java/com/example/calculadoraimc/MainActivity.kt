@@ -38,16 +38,21 @@ class MainActivity : ComponentActivity () {
     fun calcularButtonOnClick(v: View) {
         val peso = editTextTextPeso.text.toString()
         val altura = editTextTextAltura.text.toString()
-        if (peso.isNotEmpty() && altura.isNotEmpty()) {
 
+        if (peso.isNotEmpty() && altura.isNotEmpty()) {
             val intentResult = Intent(this, ResultActivity::class.java)
+            val resultado: Double = calcularIMC(peso, altura)
             intentResult.putExtra("peso", peso)
             intentResult.putExtra("altura", altura)
+            intentResult.putExtra("resultado", resultado)
             startActivity(intentResult)
         } else {
-
             Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_LONG).show()
         }
+    }
+
+    fun calcularIMC(p: String, a: String): Double {
+        return p.toDouble() / (a.toDouble() * a.toDouble())
     }
 
     override fun onStart() {
