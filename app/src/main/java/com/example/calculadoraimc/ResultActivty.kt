@@ -3,7 +3,6 @@ package com.example.calculadoraimc
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 class ResultActivity : AppCompatActivity() {
@@ -28,8 +27,18 @@ class ResultActivity : AppCompatActivity() {
             else -> "Valor Inválido"
         }
 
-        val textViewResultado = findViewById<TextView>(R.id.textView_textoresultado)
-        textViewResultado.text = textoResultadoClassificado
+        val textViewClassificacaoResultado = findViewById<TextView>(R.id.textView_classificacaoresultado)
+        val textViewDescricaoResultado = findViewById<TextView>(R.id.textView_descricaoresultado)
+        textViewClassificacaoResultado.text = "Seu IMC é de ${String.format("%.2f", resultado)}.\n" + "" +
+                "Segundo a OMS sua classificação é \n" + textoResultadoClassificado
+        val descricaoResultado = when (textoResultadoClassificado) {
+            "Magreza" -> DESCRICAO_MAGREZA
+            "Normal" -> DESCRICAO_NORMAL
+            "Sobrepeso" -> DESCRICAO_SOBREPESO
+            "Obesidade I", "Obesidade II", "Obesidade III" -> DESCRICAO_OBESIDADE
+            else -> "Descrição não disponível para o valor fornecido."
+        }
+        textViewDescricaoResultado.text = descricaoResultado
     }
 
     fun voltarButtonOnClick(v: View) {
