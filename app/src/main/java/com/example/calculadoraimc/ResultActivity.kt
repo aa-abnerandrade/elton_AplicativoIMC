@@ -22,8 +22,9 @@ class ResultActivity : AppCompatActivity() {
             resultado < 18.5 -> "Magreza"
             resultado >= 18.5 && resultado < 25 -> "Normal"
             resultado >= 25 && resultado < 30 -> "Sobrepeso"
-            resultado >= 30 && resultado < 40 -> "Obesidade"
-            resultado >= 40 -> "Obesidade Grave"
+            resultado >= 30 && resultado < 35 -> "Obesidade I"
+            resultado >= 35 && resultado < 40 -> "Obesidade II"
+            resultado >= 40 -> "Obesidade III"
             else -> "Valor Inválido"
         }
 

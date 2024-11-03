@@ -15,31 +15,78 @@
             android:id="@+id/textView_Result_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_bold"
             android:text="elton"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:textColor="#08A8D4"
+            android:textSize="24dp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/textView_textoresultado"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="64dp"
+            android:background="#8008A7D3"
             android:ems="10"
+            android:fontFamily="@font/poppins_bold"
             android:inputType="text"
-            android:text="Name"
+            android:text="..."
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_Result_title" />
 
-        <Button
-            android:id="@+id/button_Result_voltar"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintBottom_toTopOf="@+id/textView_Resultado_espaco2"
+            app:layout_constraintTop_toBottomOf="@+id/textView_textoresultado"
+            tools:layout_editor_absoluteX="178dp" />
+
+        <TextView
+            android:id="@+id/textView_Resultado_espaco2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            tools:layout_editor_absoluteX="178dp"
+            tools:layout_editor_absoluteY="527dp" />
+
+        <Button
+            android:id="@+id/button_Result_voltar"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="360dp"
+            android:background="@drawable/rounded_component"
             android:onClick="voltarButtonOnClick"
-            android:text="Voltar"
+            android:text="Editar Dados"
+            android:textAlignment="center"
+            android:textColor="#08A8D4"
+            android:textSize="16sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.19"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView_textoresultado" />
+
+        <Button
+            android:id="@+id/button_Result_novo"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="360dp"
+            android:background="@drawable/rounded_component"
+            android:text="Calcular Novo"
+            android:textAlignment="center"
+            android:textColor="#08A8D4"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.809"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView_textoresultado" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

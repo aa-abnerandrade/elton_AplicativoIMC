@@ -14,9 +14,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E1E6E9"
+        android:background="#FDFDFE"
+        android:gravity="center_horizontal|fill_vertical"
         android:orientation="vertical"
-        android:padding="20sp">
+        android:padding="20sp"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/textView_titulo"
@@ -25,8 +27,8 @@
             android:fontFamily="@font/poppins_bold"
             android:text="elton"
             android:textAlignment="center"
-            android:textColor="#04A5D0"
-            android:textSize="20dp"
+            android:textColor="#08A8D4"
+            android:textSize="24dp"
             android:textStyle="bold" />
 
         <TextView
@@ -46,57 +48,60 @@
             android:id="@+id/imageView"
             android:layout_width="wrap_content"
             android:layout_height="266dp"
-            android:src="@drawable/img" />
+            android:src="@drawable/icon3"
+            tools:src="@drawable/icon3" />
 
         <TextView
             android:id="@+id/textView_espaco2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="100sp" />
 
         <TextView
             android:id="@+id/textView_peso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Peso em Kg:" />
+            android:layout_width="233dp"
+            android:layout_height="25dp"
+            android:text="Peso"
+            android:textAlignment="center"
+            android:textColor="#373737"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextText_peso"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="40dp"
             android:layout_marginBottom="20dp"
-            android:background="#FFFFFF"
+            android:background="@drawable/rounded_component"
             android:ems="10"
-            android:inputType="text"
-            android:textSize="20sp" />
+            android:fontFamily="@font/poppins_bold"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            android:textColor="#2B2929"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView_altura"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Altura em Cm:" />
+            android:layout_width="232dp"
+            android:layout_height="25dp"
+            android:text="Altura"
+            android:textAlignment="center"
+            android:textColor="#373737"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/editTextText_altura"
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="40dp"
-            android:layout_marginBottom="48dp"
-            android:background="#FFFFFF"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/rounded_component"
             android:ems="10"
-            android:inputType="text"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/button_calcular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#08A8D4"
-            android:onClick="calcularButtonOnClick"
-            android:padding="10dp"
-            android:text="Calcular"
+            android:fontFamily="@font/poppins_bold"
+            android:inputType="numberDecimal"
             android:textAlignment="center"
-            android:textAllCaps="true"
-            android:textColor="#FFFFFF"
-            android:textColorLink="#0BB0D7"
+            android:textColor="#2B2929"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -105,6 +110,31 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_bold"
             android:textAlignment="center" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2" />
+
+        <Button
+            android:id="@+id/button_calcular"
+            android:layout_width="410dp"
+            android:layout_height="wrap_content"
+            android:background="#08A8D4"
+            android:fontFamily="@font/poppins_bold"
+            android:onClick="calcularButtonOnClick"
+            android:padding="10dp"
+            android:text="Calcular"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2" />
 
     </LinearLayout>
 

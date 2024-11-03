@@ -2,6 +2,8 @@ package com.example.calculadoraimc
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.EditText
@@ -32,6 +34,49 @@ class MainActivity : ComponentActivity () {
         Log.d("LifeCycle", "onCreate");
         editTextTextPeso = findViewById(R.id.editTextText_peso)
         editTextTextAltura = findViewById(R.id.editTextText_altura)
+
+
+        editTextTextPeso.addTextChangedListener(object : TextWatcher {
+            var isUpdating = false
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (isUpdating) { return }
+                isUpdating = true
+
+                val str = s.toString().replace(".", "").replace(",", "")
+                if (str.isNotEmpty()) {
+                    try {
+                        val formatted = str.toDouble() / 10
+                        editTextTextPeso.setText(formatted.toString())
+                        editTextTextPeso.setSelection(editTextTextPeso.text.length)
+                    } catch (e: NumberFormatException) {
+                        e.printStackTrace()
+                    }
+                }
+                isUpdating = false
+            }})
+
+        editTextTextAltura.addTextChangedListener(object : TextWatcher {
+            var isUpdating = false
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                if (isUpdating) { return }
+                isUpdating = true
+
+                val str = s.toString().replace(".", "").replace(",", "")
+                if (str.isNotEmpty()) {
+                    try {
+                        val formatted = str.toDouble() / 100
+                        editTextTextAltura.setText(formatted.toString())
+                        editTextTextAltura.setSelection(editTextTextAltura.text.length)
+                    } catch (e: NumberFormatException) {
+                        e.printStackTrace()
+                    }
+                }
+                isUpdating = false
+            }})
 
     }
 
