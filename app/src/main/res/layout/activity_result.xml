@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FDFDFE"
     tools:context=".ResultActivity">
 
 
@@ -61,8 +62,7 @@
         android:autoSizeStepGranularity="1sp"
         android:autoSizeTextType="uniform"
         android:fontFamily="@font/poppins_bold"
-        android:maxLines="4"
-        android:text="Descrição do resultado"
+        android:maxLines="9"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,11 +73,11 @@
         android:id="@+id/textView_Resultado_espaco2"
         android:layout_width="364dp"
         android:layout_height="22dp"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="302dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_descricaoresultado" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_descricaoresultado"
+        tools:layout_editor_absoluteX="24dp"
+        tools:layout_editor_absoluteY="302dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline_bottom"
@@ -90,7 +90,6 @@
         android:id="@+id/button_Result_editar"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
         android:background="@drawable/rounded_component"
         android:onClick="voltarEditarButtonOnClick"
         android:text="Editar Dados"
@@ -98,17 +97,18 @@
         android:textColor="#08A8D4"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintHorizontal_bias="0.106"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Resultado_espaco2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_Resultado_espaco2"
+        app:layout_constraintVertical_bias="0.501" />
 
     <Button
         android:id="@+id/button_Result_novo"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="216dp"
         android:background="@drawable/rounded_component"
         android:onClick="voltarNovoButtonOnClick"
         android:text="Calcular Novo"
@@ -116,6 +116,7 @@
         android:textColor="#08A8D4"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.663"
         app:layout_constraintStart_toEndOf="@+id/button_Result_editar"
