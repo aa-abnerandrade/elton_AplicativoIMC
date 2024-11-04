@@ -35,6 +35,12 @@ class MainActivity : ComponentActivity () {
         editTextTextPeso = findViewById(R.id.editTextText_peso)
         editTextTextAltura = findViewById(R.id.editTextText_altura)
 
+        val isNovoCalculo = intent.getBooleanExtra("novo_calculo", false)
+        if (isNovoCalculo) {
+            // Limpar os campos de entrada de peso e altura
+            editTextTextPeso.setText("")
+            editTextTextAltura.setText("")
+        }
 
         editTextTextPeso.addTextChangedListener(object : TextWatcher {
             var isUpdating = false
