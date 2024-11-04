@@ -16,124 +16,124 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.calculadoraimc.ui.theme.CalculadoraIMCTheme
 
-class MainActivity : ComponentActivity () {
+class MainActivity : ComponentActivity() {
 
-    private lateinit var editTextTextPeso: EditText
-    private lateinit var editTextTextAltura: EditText
+  private lateinit var editTextTextPeso: EditText
+  private lateinit var editTextTextAltura: EditText
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main);
-        Log.d("MainActivity", "onCreate called")
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    enableEdgeToEdge()
+    setContentView(R.layout.activity_main);
+    Log.d("MainActivity", "onCreate called")
 
-        initViews()
-        handleIntentForNewCalculation()
-        setupTextWatchers()
+    initViews()
+    handleIntentForNewCalculation()
+    setupTextWatchers()
 
+  }
+
+  private fun initViews() {
+    editTextTextPeso = findViewById(R.id.editTextText_peso)
+    editTextTextAltura = findViewById(R.id.editTextText_altura)
+  }
+
+  private fun handleIntentForNewCalculation() {
+    val isNewCalculation = intent.getBooleanExtra("novo_calculo", false)
+    if (isNewCalculation) {
+      editTextTextPeso.setText("")
+      editTextTextAltura.setText("")
     }
+  }
 
-    private fun initViews() {
-        editTextTextPeso = findViewById(R.id.editTextText_peso)
-        editTextTextAltura = findViewById(R.id.editTextText_altura)
-    }
+  private fun setupTextWatchers() {
+    addFormattedTextWatcher(editTextTextPeso, 10)
+    addFormattedTextWatcher(editTextTextAltura, 100)
+  }
 
-    private fun handleIntentForNewCalculation() {
-        val isNewCalculation = intent.getBooleanExtra("novo_calculo", false)
-        if (isNewCalculation) {
-            editTextTextPeso.setText("")
-            editTextTextAltura.setText("")
+  private fun addFormattedTextWatcher(editText: EditText, divisor: Int) {
+    editText.addTextChangedListener(object : TextWatcher {
+      var isUpdating = false
+      override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+      override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+      override fun afterTextChanged(s: Editable?) {
+        if (isUpdating) return
+
+        isUpdating = true
+        val str = s.toString().replace(".", "").replace(",", "")
+        if (str.isNotEmpty()) {
+          try {
+            val formatted = str.toDouble() / divisor
+            editText.setText(formatted.toString())
+            editText.setSelection(editText.text.length)
+          } catch (e: NumberFormatException) {
+            e.printStackTrace()
+          }
         }
+        isUpdating = false
+      }
+    })
+  }
+
+  fun calculateButtonOnClick(v: View) {
+    val peso = editTextTextPeso.text.toString()
+    val altura = editTextTextAltura.text.toString()
+
+    if (peso.isNotEmpty() && altura.isNotEmpty()) {
+      val intentResult = Intent(this, ResultActivity::class.java)
+      val resultado: Double = calcularIMC(peso, altura)
+      intentResult.putExtra("peso", peso)
+      intentResult.putExtra("altura", altura)
+      intentResult.putExtra("resultado", resultado)
+      startActivity(intentResult)
+    } else {
+      Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_LONG).show()
     }
+  }
 
-    private fun setupTextWatchers() {
-        addFormattedTextWatcher(editTextTextPeso, 10)
-        addFormattedTextWatcher(editTextTextAltura, 100)
-    }
+  fun calcularIMC(p: String, a: String): Double {
+    return p.toDouble() / (a.toDouble() * a.toDouble())
+  }
 
-    private fun addFormattedTextWatcher(editText: EditText, divisor: Int) {
-        editText.addTextChangedListener(object : TextWatcher {
-            var isUpdating = false
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-            override fun afterTextChanged(s: Editable?) {
-                if (isUpdating) return
+  override fun onStart() {
+    super.onStart();
+    Log.v("LifeCycle", "onStart")
+  }
 
-                isUpdating = true
-                val str = s.toString().replace(".", "").replace(",", "")
-                if (str.isNotEmpty()) {
-                    try {
-                        val formatted = str.toDouble() / divisor
-                        editText.setText(formatted.toString())
-                        editText.setSelection(editText.text.length)
-                    } catch (e: NumberFormatException) {
-                        e.printStackTrace()
-                    }
-                }
-                isUpdating = false
-            }
-        })
-    }
+  override fun onResume() {
+    super.onResume()
+    Log.w("LifeCycle", "onResume")
+  }
 
-    fun calculateButtonOnClick(v: View) {
-        val peso = editTextTextPeso.text.toString()
-        val altura = editTextTextAltura.text.toString()
+  override fun onPause() {
+    super.onPause()
+    Log.e("LifeCycle", "onPause")
+  }
 
-        if (peso.isNotEmpty() && altura.isNotEmpty()) {
-            val intentResult = Intent(this, ResultActivity::class.java)
-            val resultado: Double = calcularIMC(peso, altura)
-            intentResult.putExtra("peso", peso)
-            intentResult.putExtra("altura", altura)
-            intentResult.putExtra("resultado", resultado)
-            startActivity(intentResult)
-        } else {
-            Toast.makeText(this, "Por favor, preencha todos os campos.", Toast.LENGTH_LONG).show()
-        }
-    }
+  override fun onStop() {
+    super.onStop()
+    Log.wtf("LifeCycle", "onStop")
+  }
 
-    fun calcularIMC(p: String, a: String): Double {
-        return p.toDouble() / (a.toDouble() * a.toDouble())
-    }
-
-    override fun onStart() {
-        super.onStart();
-        Log.v("LifeCycle", "onStart")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.w("LifeCycle", "onResume")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.e("LifeCycle", "onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.wtf("LifeCycle", "onStop")
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.v("LifeCycle", "onDestroy")
-    }
+  override fun onDestroy() {
+    super.onDestroy()
+    Log.v("LifeCycle", "onDestroy")
+  }
 }
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
+  Text(
+    text = "Hello $name!",
+    modifier = modifier
+  )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    CalculadoraIMCTheme {
-        Greeting("User")
-    }
+  CalculadoraIMCTheme {
+    Greeting("User")
+  }
 }
